@@ -278,7 +278,3 @@ print(study.best_value)
 
 # %%
 # sns.pairplot(wine)
-
-# %%
-# iqr_threshold = 3.89
-# l2_lambda = 3.77e-5
