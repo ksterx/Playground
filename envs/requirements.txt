@@ -1,0 +1,20 @@
+# Development
+black
+flake8
+mypy
+snakeviz
+
+# MLOps
+lightning
+mlflow
+torch-tb-profiler
+transformers
+torchmetrics[image]
+
+# Others
+ipywidgets
+portalocker
+fugashi
+ipadic
+ujson
+gradio

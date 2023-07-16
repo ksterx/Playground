@@ -1,0 +1,45 @@
+version: "3"
+services:
+  deepx:
+    container_name: deepx
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # image: ksterx/ai:ubuntu-0.1
+    shm_size: '32gb'
+    ports:
+      - "8888:8888"
+      - "8080:8080"
+      - "6006:6006"
+      - "2525:2525"
+    volumes:
+      - ../:/workspace
+      - C:/Users/tomkj/Development/DeepX/:/deepx
+      # Uncomment the following line to enable X11 forwarding
+      # - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY=$DISPLAY
+    restart: always
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu ]
+              count: 1
+    working_dir: /workspace
+
+  mlflow:
+    container_name: mlflow
+    image: ghcr.io/mlflow/mlflow:latest
+    ports:
+      - "5000:5000"
+    volumes:
+      - ../experiments:/workspace/mlruns
+    restart: always
+    depends_on:
+      - deepx
+    tty: true
+    working_dir: /workspace
+    command: mlflow server --backend-store-uri /workspace/mlruns --host 0.0.0.0

@@ -1,5 +1,19 @@
-# Created by https://www.toptal.com/developers/gitignore/api/python,macos,linux,windows
-# Edit at https://www.toptal.com/developers/gitignore?templates=python,macos,linux,windows
+# Created by https://www.toptal.com/developers/gitignore/api/linux,windows,macos,jupyternotebooks,python
+# Edit at https://www.toptal.com/developers/gitignore?templates=linux,windows,macos,jupyternotebooks,python
+
+### JupyterNotebooks ###
+# gitignore template for Jupyter Notebooks
+# website: http://jupyter.org/
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Remove previous ipynb_checkpoints
+#   git rm -r .ipynb_checkpoints/
 
 ### Linux ###
 *~
@@ -128,11 +142,8 @@ docs/_build/
 target/
 
 # Jupyter Notebook
-.ipynb_checkpoints
 
 # IPython
-profile_default/
-ipython_config.py
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
@@ -215,6 +226,11 @@ cython_debug/
 # Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
 poetry.toml
 
+# ruff
+.ruff_cache/
+
+# LSP config files
+pyrightconfig.json
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -242,6 +258,25 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/python,macos,linux,windows
+.vscode/
 
-logs/
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/linux,windows,macos,jupyternotebooks,python
+
+credentials.yaml
+data/*
+!data/README.md
+runs/*
+!runs/README.md
+flagged/
+*.prof
